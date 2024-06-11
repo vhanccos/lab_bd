@@ -264,7 +264,7 @@ class Pais(models.Model):
     paiestreg = models.CharField(db_column='PaiEstReg', max_length=1, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'PAIS'
 
 
