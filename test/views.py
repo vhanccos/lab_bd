@@ -2,11 +2,20 @@ from django.shortcuts import render
 from .models import Pais
 
 # Create
-print("Creamos 2 paises")
+print("Creamos paises")
 pais = Pais(paides="Pais 1", paicod="1", paiestreg="v")
 pais.save()
 
 pais = Pais(paides="Pais 2", paicod="2", paiestreg="f")
+pais.save()
+
+pais = Pais(paides="Pais 3", paicod="3", paiestreg="f")
+pais.save()
+
+pais = Pais(paides="Pais 4", paicod="4", paiestreg="v")
+pais.save()
+
+pais = Pais(paides="Pais 5", paicod="5", paiestreg="f")
 pais.save()
 
 # Read
