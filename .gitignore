@@ -1,5 +1,10 @@
 GanadoDietas/src/main/java/com/mycompany/ganadodietas/CConection.java
 
+# Nvim settings
+GanadoDietas/.settings/*
+GanadoDietas/.classpath
+GanadoDietas/.project
+
 # Compiled class file
 *.class
 
