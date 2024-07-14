@@ -1,31 +1,26 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.ganadodietas;
+
+import static com.mycompany.ganadodietas.MantenimientoTabla.tablaSelec;
 
 /**
  *
  * @author Usuario
  */
-import com.formdev.flatlaf.FlatDarculaLaf;
-import java.awt.Color;
-import java.awt.Component;
-import javax.swing.JTable;
-import javax.swing.UIManager;
-
-public class MantenimientoTabla extends javax.swing.JFrame {
+public class MantenimientoT1 extends javax.swing.JPanel {
 
     /**
-     * Creates new form MantenimientoTabla
+     * Creates new form MantenimientoT
      */
     public static int flag = 0;
     // VALOR DEFAULT DE LA TABLA A MOSTRAR
-    public static String tablaSelec = "ALIMENTO";
+    public static String tablaSelec = "ALMACEN";
 
-    public MantenimientoTabla() {
+    public MantenimientoT1() {
         initComponents();
-        this.setLocationRelativeTo(null);
         CTabla tabla = new CTabla();
         textEstReg.setEnabled(false);
         txtId.setEnabled(false);
@@ -66,7 +61,7 @@ public class MantenimientoTabla extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         TFlag = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -198,14 +193,14 @@ public class MantenimientoTabla extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaQ);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 360, 210));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 210));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 210));
 
         jLabel2.setText("Tabla:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 16, -1, 30));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALIMENTO", "ALIMENTO DIETA TOMA", "NUTRIENTE", "NUTRIENTE ALIMENTO", "FECHA INICIO ", "DIETA", "DIETA ANIMAL FECHA INICIO", "ANIMAL", "ANIMAL NUTRIENTE" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALMACEN", "CABECERA PEDIDO", "DETALLES DE PEDIDO", "EMPRESA", "GRANJA", "PROVEEDORES ", "STOCK" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -222,18 +217,7 @@ public class MantenimientoTabla extends javax.swing.JFrame {
         });
         jPanel1.add(TFlag, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 40, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
-        );
-
-        pack();
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
@@ -366,8 +350,12 @@ public class MantenimientoTabla extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnCancelActionPerformed
 
     private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
-        this.dispose();
+       
     }//GEN-LAST:event_BtnSalirActionPerformed
+
+    private void BtnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDetallesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnDetallesActionPerformed
 
     private void tablaQMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaQMouseClicked
         CTabla tabla = new CTabla();
@@ -403,7 +391,6 @@ public class MantenimientoTabla extends javax.swing.JFrame {
 
     private void tablaQComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tablaQComponentShown
         // TODO add your handling code here:
-
     }//GEN-LAST:event_tablaQComponentShown
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -413,14 +400,10 @@ public class MantenimientoTabla extends javax.swing.JFrame {
         tabla.Mostrar(tablaQ, tablaSelec);
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void BtnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDetallesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnDetallesActionPerformed
-
     private void TFlagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFlagActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TFlagActionPerformed
-    private void ActivarT() {
+private void ActivarT() {
         btnInac.setEnabled(true);
         btnReact.setEnabled(true);
         borrar.setEnabled(true);
@@ -454,40 +437,6 @@ public class MantenimientoTabla extends javax.swing.JFrame {
     private void inactivar() {
         textEstReg.setEnabled(false);
         txtId.setEnabled(false);
-    }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MantenimientoTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MantenimientoTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MantenimientoTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MantenimientoTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MantenimientoTabla().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

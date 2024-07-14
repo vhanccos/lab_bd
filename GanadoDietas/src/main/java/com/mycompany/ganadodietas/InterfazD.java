@@ -1,33 +1,27 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.ganadodietas;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
-import java.awt.Color;
-import java.awt.Component;
-import javax.swing.JTable;
-import javax.swing.UIManager;
-
 /**
  *
- * @author wbbtester
+ * @author Usuario
  */
-public class InterfazDietas extends javax.swing.JFrame {
+public class InterfazD extends javax.swing.JPanel {
 
+    /**
+     * Creates new form InterfazD
+     */
     // int 1 = crear, 2 = editar, 3 = eliminar, 4 = reactivar, 5 = inactivar
     // default 0
     public static int flag = 0;
     // VALOR DEFAULT DE LA TABLA A MOSTRAR
     public static String tablaSelec = "ALIMENTO TIPO";
 
-    /**
-     * Creates new form InterfazDietas
-     */
-    public InterfazDietas() {
+    public InterfazD() {
+    
         initComponents();
-        this.setLocationRelativeTo(null);
         CTabla tabla = new CTabla();
         textEstReg.setEnabled(false);
         txtId.setEnabled(false);
@@ -35,7 +29,6 @@ public class InterfazDietas extends javax.swing.JFrame {
         tabla.Mostrar(tablaQ, tablaSelec);
         CConection conexion = new CConection();
         conexion.estableceConexion();
-
     }
 
     /**
@@ -66,12 +59,11 @@ public class InterfazDietas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaQ = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
         TFlag = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setText("Código:");
 
@@ -221,6 +213,8 @@ public class InterfazDietas extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, -1, -1));
+
         tablaQ.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -252,9 +246,9 @@ public class InterfazDietas extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +258,7 @@ public class InterfazDietas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel2.setText("Tabla:");
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 350, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALIMENTO TIPO", "ANIMAL TIPO", "ANIMAL UTILIDAD", "CIUDAD", "ESTADO", "MAGNITUD", "PAIS" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -272,6 +266,10 @@ public class InterfazDietas extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+
+        jLabel2.setText("Tabla:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         TFlag.setText("0");
         TFlag.setEnabled(false);
@@ -280,45 +278,16 @@ public class InterfazDietas extends javax.swing.JFrame {
                 TFlagActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(12, 12, 12)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(jLabel2)
-                            .addGap(18, 18, 18)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(TFlag, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TFlag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        pack();
+        add(TFlag, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, -1, 30));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
+    private void textEstRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textEstRegActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textEstRegActionPerformed
 
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
         int respuesta = javax.swing.JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea eliminar este registro?", "Confirmar eliminación", javax.swing.JOptionPane.YES_NO_OPTION);
@@ -346,10 +315,6 @@ public class InterfazDietas extends javax.swing.JFrame {
         inactivar();
     }//GEN-LAST:event_borrarActionPerformed
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
-
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
 
         flag = 1;
@@ -366,23 +331,6 @@ public class InterfazDietas extends javax.swing.JFrame {
         modificar.setEnabled(false);
     }//GEN-LAST:event_crearActionPerformed
 
-    private void tablaQMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaQMouseClicked
-        CTabla tabla = new CTabla();
-
-        if (textEstReg.getText().equals("*")) {
-            javax.swing.JOptionPane.showMessageDialog(null, "La acción no es posible el elemento fue eliminado");
-            Limpiar();
-            inactivar();
-            TFlag.setText("0");
-            ActivarF();
-        } else {
-
-            tabla.Seleccionar(tablaQ, txtId, textDesc, textEstReg, TFlag);
-            ActivarT2();
-        }
-
-    }//GEN-LAST:event_tablaQMouseClicked
-
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
         flag = 2;
 
@@ -393,14 +341,32 @@ public class InterfazDietas extends javax.swing.JFrame {
         crear.setEnabled(false);
     }//GEN-LAST:event_modificarActionPerformed
 
-    private void textEstRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textEstRegActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textEstRegActionPerformed
-    private void inactivar() {
-        textEstReg.setEnabled(false);
-        txtId.setEnabled(false);
-        textDesc.setEnabled(false);
-    }
+    private void btnInacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInacActionPerformed
+        flag = 5;
+
+        textEstReg.setText("I");
+        CTabla tabla = new CTabla();
+        tabla.Inactivar(tablaSelec, txtId, textDesc, textEstReg, TFlag);
+        ActivarF();
+
+        TFlag.setText("0");
+        Limpiar();
+        inactivar();
+    }//GEN-LAST:event_btnInacActionPerformed
+
+    private void btnReactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReactActionPerformed
+        flag = 4;
+
+        textEstReg.setText("A");
+        CTabla tabla = new CTabla();
+        tabla.Reactivar(tablaSelec, txtId, textDesc, textEstReg, TFlag);
+        tabla.Mostrar(tablaQ, tablaSelec);
+        TFlag.setText("0");
+        Limpiar();
+        inactivar();
+        ActivarF();
+    }//GEN-LAST:event_btnReactActionPerformed
+
     private void btnActuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActuActionPerformed
 
         CTabla tabla = new CTabla();
@@ -440,37 +406,6 @@ public class InterfazDietas extends javax.swing.JFrame {
         tabla.Mostrar(tablaQ, tablaSelec);
     }//GEN-LAST:event_btnActuActionPerformed
 
-    private void btnInacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInacActionPerformed
-        flag = 5;
-
-        textEstReg.setText("I");
-        CTabla tabla = new CTabla();
-        tabla.Inactivar(tablaSelec, txtId, textDesc, textEstReg, TFlag);
-        ActivarF();
-
-        TFlag.setText("0");
-        Limpiar();
-        inactivar();
-    }//GEN-LAST:event_btnInacActionPerformed
-
-    private void btnReactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReactActionPerformed
-        flag = 4;
-
-        textEstReg.setText("A");
-        CTabla tabla = new CTabla();
-        tabla.Reactivar(tablaSelec, txtId, textDesc, textEstReg, TFlag);
-        tabla.Mostrar(tablaQ, tablaSelec);
-        TFlag.setText("0");
-        Limpiar();
-        inactivar();
-        ActivarF();
-
-    }//GEN-LAST:event_btnReactActionPerformed
-
-    private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_BtnSalirActionPerformed
-
     private void BtnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelActionPerformed
         flag = 6;
         Limpiar();
@@ -478,12 +413,61 @@ public class InterfazDietas extends javax.swing.JFrame {
         ActivarF();
     }//GEN-LAST:event_BtnCancelActionPerformed
 
+    private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
+    }//GEN-LAST:event_BtnSalirActionPerformed
+
+    private void tablaQMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaQMouseClicked
+        CTabla tabla = new CTabla();
+
+        if (textEstReg.getText().equals("*")) {
+            javax.swing.JOptionPane.showMessageDialog(null, "La acción no es posible el elemento fue eliminado");
+            Limpiar();
+            inactivar();
+            TFlag.setText("0");
+            ActivarF();
+        } else {
+
+            tabla.Seleccionar(tablaQ, txtId, textDesc, textEstReg, TFlag);
+            ActivarT2();
+        }
+    }//GEN-LAST:event_tablaQMouseClicked
+
+    private void tablaQMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaQMousePressed
+        // TODO add your handling code here:
+        CTabla tabla = new CTabla();
+        if (textEstReg.getText().equals("*")) {
+            javax.swing.JOptionPane.showMessageDialog(null, "La acción no es posible el elemento fue eliminado");
+            Limpiar();
+            TFlag.setText("0");
+
+            inactivar();
+        } else {
+
+            tabla.Seleccionar(tablaQ, txtId, textDesc, textEstReg, TFlag);
+
+        }
+    }//GEN-LAST:event_tablaQMousePressed
+
+    private void tablaQComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tablaQComponentShown
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_tablaQComponentShown
+
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         String elmSel = (String) jComboBox1.getSelectedItem();
         tablaSelec = elmSel;
         CTabla tabla = new CTabla();
         tabla.Mostrar(tablaQ, tablaSelec);
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void TFlagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFlagActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFlagActionPerformed
+    private void inactivar() {
+        textEstReg.setEnabled(false);
+        txtId.setEnabled(false);
+        textDesc.setEnabled(false);
+    }
 
     private void ActivarT() {
         btnInac.setEnabled(true);
@@ -517,52 +501,6 @@ public class InterfazDietas extends javax.swing.JFrame {
         textEstReg.setText("");
 
     }
-    private void TFlagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFlagActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TFlagActionPerformed
-
-    private void tablaQMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaQMousePressed
-        // TODO add your handling code here:
-        CTabla tabla = new CTabla();
-        if (textEstReg.getText().equals("*")) {
-            javax.swing.JOptionPane.showMessageDialog(null, "La acción no es posible el elemento fue eliminado");
-            Limpiar();
-            TFlag.setText("0");
-
-            inactivar();
-        } else {
-
-            tabla.Seleccionar(tablaQ, txtId, textDesc, textEstReg, TFlag);
-
-        }
-    }//GEN-LAST:event_tablaQMousePressed
-
-    private void tablaQComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tablaQComponentShown
-        // TODO add your handling code here:
-        
-  
-
-    }//GEN-LAST:event_tablaQComponentShown
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        try {
-            UIManager.setLookAndFeel(new FlatDarculaLaf());
-        } catch (Exception ex) {
-            System.err.println("Failed to initialize LaF");
-        }
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new InterfazDietas().setVisible(true);
-
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCancel;
     private javax.swing.JButton BtnSalir;

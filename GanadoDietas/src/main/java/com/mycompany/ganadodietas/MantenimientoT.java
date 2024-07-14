@@ -1,31 +1,27 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.ganadodietas;
+
+import static com.mycompany.ganadodietas.MantenimientoTabla.tablaSelec;
+import java.beans.JavaBean;
 
 /**
  *
  * @author Usuario
  */
-import com.formdev.flatlaf.FlatDarculaLaf;
-import java.awt.Color;
-import java.awt.Component;
-import javax.swing.JTable;
-import javax.swing.UIManager;
-
-public class MantenimientoTabla extends javax.swing.JFrame {
+public class MantenimientoT extends javax.swing.JPanel {
 
     /**
-     * Creates new form MantenimientoTabla
+     * Creates new form MantenimientoT
      */
     public static int flag = 0;
     // VALOR DEFAULT DE LA TABLA A MOSTRAR
     public static String tablaSelec = "ALIMENTO";
 
-    public MantenimientoTabla() {
+    public MantenimientoT() {
         initComponents();
-        this.setLocationRelativeTo(null);
         CTabla tabla = new CTabla();
         textEstReg.setEnabled(false);
         txtId.setEnabled(false);
@@ -59,6 +55,7 @@ public class MantenimientoTabla extends javax.swing.JFrame {
         BtnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         BtnDetalles = new javax.swing.JButton();
+        DesJText = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaQ = new javax.swing.JTable();
@@ -66,7 +63,8 @@ public class MantenimientoTabla extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         TFlag = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setEnabled(false);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -167,6 +165,11 @@ public class MantenimientoTabla extends javax.swing.JFrame {
         });
         jPanel2.add(BtnDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 120, -1));
 
+        DesJText.setEditable(false);
+        DesJText.setBorder(null);
+        DesJText.setEnabled(false);
+        jPanel2.add(DesJText, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 280, -1));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -198,7 +201,7 @@ public class MantenimientoTabla extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaQ);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 360, 210));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 210));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 210));
 
@@ -222,18 +225,7 @@ public class MantenimientoTabla extends javax.swing.JFrame {
         });
         jPanel1.add(TFlag, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 40, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
-        );
-
-        pack();
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
@@ -366,8 +358,42 @@ public class MantenimientoTabla extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnCancelActionPerformed
 
     private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
-        this.dispose();
+
     }//GEN-LAST:event_BtnSalirActionPerformed
+
+    private void BtnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDetallesActionPerformed
+        // TODO add your handling code here:
+        javax.swing.JTable table = tablaQ; // Reference to your JTable
+
+        int selectedRow = tablaQ.getSelectedRow();
+        if (selectedRow == -1) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Seleccione una fila primero.");
+            return;
+        }
+
+        // Get data from the selected row
+        int columnCount = tablaQ.getColumnCount();
+        Object[] rowData = new Object[columnCount];
+        String[] columnNames = new String[columnCount];
+        for (int i = 0; i < columnCount; i++) {
+
+            rowData[i] = tablaQ.getValueAt(selectedRow, i);
+            columnNames[i] = tablaQ.getColumnName(i);
+
+        }
+        System.out.println(rowData.toString());
+        System.out.println(columnNames.toString());
+
+        // Create and show the detail frame
+        // Create and show the detail frame
+        DetailFrame detailFrame = new DetailFrame(rowData, columnNames, new DetailFrame.DetailFrameCallback() {
+            @Override
+            public void onDetailGenerated(String desc) {
+                DesJText.setText(desc);
+            }
+        });
+        detailFrame.setVisible(true);
+    }//GEN-LAST:event_BtnDetallesActionPerformed
 
     private void tablaQMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaQMouseClicked
         CTabla tabla = new CTabla();
@@ -403,7 +429,6 @@ public class MantenimientoTabla extends javax.swing.JFrame {
 
     private void tablaQComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tablaQComponentShown
         // TODO add your handling code here:
-
     }//GEN-LAST:event_tablaQComponentShown
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -412,10 +437,6 @@ public class MantenimientoTabla extends javax.swing.JFrame {
         CTabla tabla = new CTabla();
         tabla.Mostrar(tablaQ, tablaSelec);
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void BtnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDetallesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnDetallesActionPerformed
 
     private void TFlagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFlagActionPerformed
         // TODO add your handling code here:
@@ -451,49 +472,17 @@ public class MantenimientoTabla extends javax.swing.JFrame {
         textEstReg.setText("");
 
     }
+
     private void inactivar() {
         textEstReg.setEnabled(false);
         txtId.setEnabled(false);
-    }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MantenimientoTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MantenimientoTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MantenimientoTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MantenimientoTabla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MantenimientoTabla().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCancel;
     private javax.swing.JButton BtnDetalles;
     private javax.swing.JButton BtnSalir;
+    private javax.swing.JTextField DesJText;
     private javax.swing.JTextField TFlag;
     private javax.swing.JButton borrar;
     private javax.swing.JButton btnActu;
